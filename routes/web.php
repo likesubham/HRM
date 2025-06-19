@@ -15,11 +15,11 @@ Route::get('/', function () {
 // Include other route files
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
+require __DIR__.'/member.php';
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Routes that require authentication and verification
     Route::get('/users', function () { return 'Users Page'; })->name('users');
-    Route::get('/members', function () { return 'Members Page'; })->name('members');
     Route::get('/settings/general', function () { return 'General Settings Page'; })->name('settings.general');
     Route::get('/settings/users', function () { return 'User Settings Page'; })->name('settings.users');
 });
