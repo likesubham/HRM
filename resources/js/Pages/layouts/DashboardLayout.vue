@@ -8,7 +8,7 @@
           <i :class="collapsed ? 'pi pi-angle-right' : 'pi pi-angle-left'" class="text-lg"></i>
         </button>
       </div>
-      <nav class="flex flex-col gap-2 px-2">
+      <nav class="flex flex-col gap-2 px-2 flex-1">
         <Link v-for="item in navItems" :key="item.label" :href="item.href" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition group relative"
           :class="[
             isActive(item),
@@ -39,6 +39,17 @@
           </div>
         </div>
       </nav>
+      <!-- Logout Button at the bottom -->
+      <div class="mt-auto p-2">
+        <button @click="logout" class="flex items-center gap-3 px-3 py-2 rounded-lg w-full font-medium transition hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0 focus:outline-none group relative"
+          :class="[collapsed ? 'justify-center' : '']"
+          :aria-label="'Logout'"
+        >
+          <i class="pi pi-sign-out"></i>
+          <span v-if="!collapsed">Logout</span>
+          <span v-else class="absolute left-full ml-2 bg-surface-900 text-surface-0 text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20">Logout</span>
+        </button>
+      </div>
     </aside>
     <!-- Main Content -->
     <main class="flex-1 flex items-center justify-center">
@@ -49,7 +60,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3';
+import { Link, usePage, router } from '@inertiajs/vue3';
 
 const collapsed = ref(false);
 const settingsOpen = ref(false);
@@ -90,6 +101,10 @@ function handleClickOutside(event) {
   if (settingsDropdown.value && !settingsDropdown.value.contains(event.target)) {
     settingsOpen.value = false;
   }
+}
+
+function logout() {
+  router.post('/logout');
 }
 
 onMounted(() => {
