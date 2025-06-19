@@ -8,11 +8,13 @@ Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('dashboard');
     }
+
     return redirect()->route('login');
 })->name('welcome');
 
-// Include only the existing auth route file
+// Include other route files
 require __DIR__.'/auth.php';
+require __DIR__.'/dashboard.php';
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Routes that require authentication and verification

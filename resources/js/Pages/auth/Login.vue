@@ -47,14 +47,18 @@ import Checkbox from 'primevue/checkbox';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 
 const email = ref('');
 const password = ref('');
 const rememberMe = ref(false);
 
 function handleLogin() {
-  // Placeholder for login logic
-  alert(`Logging in with: ${email.value}, Remember me: ${rememberMe.value}`);
+  router.post('/login', {
+    email: email.value,
+    password: password.value,
+    remember: rememberMe.value,
+  });
 }
 </script>
 
