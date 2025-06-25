@@ -69,7 +69,8 @@ const navItems = [
   { label: 'Dashboard', href: '/dashboard', icon: 'pi pi-home' },
   { label: 'Users', href: '/users', icon: 'pi pi-users' },
   { label: 'Members', href: '/members', icon: 'pi pi-id-card' },
-  { label: 'Student Management', href: '/students', icon: 'pi pi-book' }, // <-- Added
+  { label: 'Student Management', href: '/students', icon: 'pi pi-book' }, 
+  { label: 'Staff Management', href: '/staff', icon: 'pi pi-briefcase' },
 ];
 
 function isActive(item) {
