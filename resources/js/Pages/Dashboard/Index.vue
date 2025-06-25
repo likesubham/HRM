@@ -1,10 +1,10 @@
 <template>
   <DashboardLayout>
     <template #default>
-      <div class="w-full max-w-6xl mx-auto py-8 px-4">
+      <div class="w-full mx-auto py-8 px-4">
         <h1 class="text-2xl font-bold text-surface-900 dark:text-surface-0 mb-6">Dashboard</h1>
-        <!-- Summary Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Summary Cards (All in one row) -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div class="bg-surface-0 dark:bg-surface-900 rounded-xl shadow p-6 flex flex-col">
             <span class="text-surface-500 dark:text-surface-400 font-semibold mb-2">Total Students</span>
             <span class="text-3xl font-bold text-surface-900 dark:text-surface-0">250</span>
@@ -17,10 +17,7 @@
             <span class="text-surface-500 dark:text-surface-400 font-semibold mb-2">Pending Payments</span>
             <span class="text-3xl font-bold text-surface-900 dark:text-surface-0">$1,200</span>
           </div>
-        </div>
-        <!-- Visitors Today -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div class="bg-surface-50 dark:bg-surface-800 rounded-xl shadow p-6 flex flex-col md:col-span-1">
+          <div class="bg-surface-0 dark:bg-surface-900 rounded-xl shadow p-6 flex flex-col">
             <span class="text-surface-500 dark:text-surface-400 font-semibold mb-2">New Visitors Today</span>
             <span class="text-2xl font-bold text-surface-900 dark:text-surface-0">12</span>
           </div>
