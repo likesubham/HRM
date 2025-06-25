@@ -1,70 +1,65 @@
 <template>
-  <div class="min-h-screen flex bg-gradient-to-br from-surface-100 via-surface-50 to-surface-200 dark:from-surface-950 dark:via-surface-900 dark:to-surface-950">
+  <div class="min-h-screen w-full">
     <!-- Sidebar -->
-    <aside :class="['transition-all duration-300', collapsed ? 'w-20' : 'w-64', 'bg-surface-0 dark:bg-surface-900 shadow-lg flex flex-col min-h-screen relative']">
-      <div class="flex items-center justify-between p-4">
-        <span class="text-2xl font-bold text-primary mx-auto w-full text-center">{{ collapsed ? 'H' : 'HMS' }}</span>
-        <button @click="toggleCollapse" class="ml-auto p-2 rounded hover:bg-surface-100 dark:hover:bg-surface-800 focus:outline-none" :aria-label="collapsed ? 'Expand sidebar' : 'Collapse sidebar'">
-          <i :class="collapsed ? 'pi pi-angle-right' : 'pi pi-angle-left'" class="text-lg"></i>
-        </button>
+    <aside class="fixed left-0 top-0 w-64 h-screen bg-surface-0 dark:bg-surface-900 shadow-lg flex flex-col z-30">
+      <div style="border-right: 0px !important; border-bottom: 0px !important;" class="flex items-center justify-center h-16 custom-border">
+        <span class="text-2xl font-bold text-primary">HMS</span>
       </div>
-      <nav class="flex flex-col gap-2 px-2 flex-1">
-        <Link v-for="item in navItems" :key="item.label" :href="item.href" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition group relative"
-          :class="[
-            isActive(item),
-            'hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0',
-            collapsed ? 'justify-center' : ''
-          ]"
+      <nav class="flex-1 flex flex-col gap-2 px-2 py-4">
+        <Link v-for="item in navItems" :key="item.label" :href="item.href" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition group relative hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0"
+          :class="isActive(item)"
           :aria-label="item.label"
         >
           <i :class="item.icon"></i>
-          <span v-if="!collapsed">{{ item.label }}</span>
-          <span v-else class="absolute left-full ml-2 bg-surface-900 text-surface-0 text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20">{{ item.label }}</span>
+          <span>{{ item.label }}</span>
         </Link>
         <!-- Settings Submenu -->
         <div>
           <button @click="toggleSettings" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0 font-medium w-full transition group relative focus:outline-none"
-            :class="[collapsed ? 'justify-center' : '', settingsActive ? 'bg-surface-200 dark:bg-surface-800' : '']"
+            :class="[settingsActive ? 'bg-surface-200 dark:bg-surface-800' : '']"
             :aria-expanded="settingsOpen"
             :aria-label="'Settings'"
             style="border:none;box-shadow:none;"
           >
-            <i class="pi pi-cog"></i> <span v-if="!collapsed">Settings</span>
-            <i class="pi pi-angle-down ml-auto transition-transform duration-200" v-if="!collapsed" :style="settingsOpen ? 'transform: rotate(-180deg);' : ''"></i>
-            <span v-else class="absolute left-full ml-2 bg-surface-900 text-surface-0 text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20">Settings</span>
+            <i class="pi pi-cog"></i> <span>Settings</span>
+            <i class="pi pi-angle-down ml-auto transition-transform duration-200" :style="settingsOpen ? 'transform: rotate(-180deg);' : ''"></i>
           </button>
-          <div v-if="settingsOpen && !collapsed" class="flex flex-col w-full mt-1 gap-1">
+          <div v-if="settingsOpen" class="flex flex-col w-full mt-1 gap-1">
             <Link href="/settings/general" class="block w-full px-6 py-2 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0 font-normal text-left" :class="isActive({href: '/settings/general'})">General Settings</Link>
             <Link href="/settings/users" class="block w-full px-6 py-2 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0 font-normal text-left" :class="isActive({href: '/settings/users'})">User Settings</Link>
           </div>
         </div>
       </nav>
-      <!-- Logout Button at the bottom -->
-      <div class="mt-auto p-2">
+      <div class="p-4">
         <button @click="logout" class="flex items-center gap-3 px-3 py-2 rounded-lg w-full font-medium transition hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-900 dark:text-surface-0 focus:outline-none group relative"
-          :class="[collapsed ? 'justify-center' : '']"
           :aria-label="'Logout'"
         >
           <i class="pi pi-sign-out"></i>
-          <span v-if="!collapsed">Logout</span>
-          <span v-else class="absolute left-full ml-2 bg-surface-900 text-surface-0 text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-20">Logout</span>
+          <span>Logout</span>
         </button>
       </div>
     </aside>
-    <!-- Main Content -->
-    <main class="flex-1 flex items-center justify-center">
-      <slot />
-    </main>
+    <!-- Main Content Wrapper -->
+    <div class="ml-64 min-h-screen bg-gradient-to-br from-surface-100 via-surface-50 to-surface-200 dark:from-surface-950 dark:via-surface-900 dark:to-surface-950">
+      <Header class="fixed top-0 left-64 w-[calc(100%-16rem)] z-40 custom-border">
+        <template #breadcrumb>
+          <BreadcrumbBar :items="[{ label: 'Dashboard', url: '/dashboard' }]" />
+        </template>
+      </Header>
+      <div class="w-full">
+        <slot />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref } from 'vue';
 import { Link, usePage, router } from '@inertiajs/vue3';
+import Header from '../../components/Header.vue';
+import BreadcrumbBar from '../../components/BreadcrumbBar.vue';
 
-const collapsed = ref(false);
 const settingsOpen = ref(false);
-const settingsDropdown = ref(null);
 const page = usePage();
 
 const navItems = [
@@ -77,46 +72,19 @@ function isActive(item) {
   return page.url.startsWith(item.href) ? 'bg-surface-200 dark:bg-surface-800' : '';
 }
 
-function toggleCollapse() {
-  collapsed.value = !collapsed.value;
-  if (collapsed.value) settingsOpen.value = false;
-}
-
-function toggleSettings(e) {
+function toggleSettings() {
   settingsOpen.value = !settingsOpen.value;
-}
-
-function onSettingsBlur(e) {
-  // Close dropdown if focus leaves the dropdown and button
-  setTimeout(() => {
-    if (!settingsDropdown.value?.contains(document.activeElement)) {
-      settingsOpen.value = false;
-    }
-  }, 100);
 }
 
 const settingsActive = page.url.startsWith('/settings');
 
-function handleClickOutside(event) {
-  if (settingsDropdown.value && !settingsDropdown.value.contains(event.target)) {
-    settingsOpen.value = false;
-  }
-}
-
 function logout() {
   router.post('/logout');
 }
-
-onMounted(() => {
-  document.addEventListener('mousedown', handleClickOutside);
-});
-onBeforeUnmount(() => {
-  document.removeEventListener('mousedown', handleClickOutside);
-});
 </script>
 
-<style scoped>
-.group:hover .group-hover\:opacity-100 {
-  opacity: 1;
+<style>
+.custom-border {
+  border: 1px solid #ccc !important;
 }
 </style> 
