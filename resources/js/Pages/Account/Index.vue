@@ -6,18 +6,18 @@
           <h1 class="text-2xl font-bold text-surface-900 dark:text-surface-0">Accounts</h1>
           <Button type="button" @click="$inertia.visit('/accounts/create')" label="Add Transaction" icon="pi pi-plus" severity="primary" />
         </div>
-        <h2 class="text-xl font-semibold mb-6 text-surface-900 dark:text-surface-0">Accounts Overview</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div class="bg-gray-50 rounded-xl p-6 flex flex-col">
-            <span class="text-sm text-gray-500 mb-2">Total Income</span>
+        <h2 class="text-xl font-semibold mb-4 text-surface-900 dark:text-surface-0">Accounts Overview</h2>
+        <div class="flex flex-row gap-4 mb-6">
+          <div class="bg-gray-50 rounded-xl p-4 flex-1 flex flex-col items-start border border-gray-200 shadow-sm">
+            <span class="text-sm text-gray-500 mb-1">Total Income</span>
             <span class="text-2xl md:text-3xl font-bold text-surface-900 dark:text-surface-0">$12,500.00</span>
           </div>
-          <div class="bg-gray-50 rounded-xl p-6 flex flex-col">
-            <span class="text-sm text-gray-500 mb-2">Total Expenses</span>
+          <div class="bg-gray-50 rounded-xl p-4 flex-1 flex flex-col items-start border border-gray-200 shadow-sm">
+            <span class="text-sm text-gray-500 mb-1">Total Expenses</span>
             <span class="text-2xl md:text-3xl font-bold text-surface-900 dark:text-surface-0">$4,200.00</span>
           </div>
-          <div class="bg-gray-50 rounded-xl p-6 flex flex-col">
-            <span class="text-sm text-gray-500 mb-2">Current Balance</span>
+          <div class="bg-gray-50 rounded-xl p-4 flex-1 flex flex-col items-start border border-gray-200 shadow-sm">
+            <span class="text-sm text-gray-500 mb-1">Current Balance</span>
             <span class="text-2xl md:text-3xl font-bold text-surface-900 dark:text-surface-0">$8,300.00</span>
           </div>
         </div>
