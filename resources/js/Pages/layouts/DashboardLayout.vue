@@ -66,6 +66,7 @@ const navItems = [
   { label: 'Dashboard', href: '/dashboard', icon: 'pi pi-home' },
   { label: 'Users', href: '/users', icon: 'pi pi-users' },
   { label: 'Members', href: '/members', icon: 'pi pi-id-card' },
+  { label: 'Student Management', href: '/students', icon: 'pi pi-book' }, // <-- Added
 ];
 
 function isActive(item) {
@@ -87,4 +88,4 @@ function logout() {
 .custom-border {
   border: 1px solid #ccc !important;
 }
-</style> 
+</style>

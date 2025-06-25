@@ -16,6 +16,7 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
 require __DIR__.'/member.php';
+require __DIR__.'/student.php';
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Routes that require authentication and verification
