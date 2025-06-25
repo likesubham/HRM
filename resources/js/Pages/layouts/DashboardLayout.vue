@@ -43,7 +43,10 @@
     <div class="ml-64 min-h-screen bg-white">
       <Header class="fixed top-0 left-64 w-[calc(100%-16rem)] z-50 custom-border bg-white">
         <template #breadcrumb>
-          <BreadcrumbBar :items="[{ label: 'Dashboard', url: '/dashboard' }]" />
+          <slot name="breadcrumb"></slot>
+        </template>
+        <template #header>
+          <slot name="header"></slot>
         </template>
       </Header>
       <div class="w-full pt-16 relative z-10">

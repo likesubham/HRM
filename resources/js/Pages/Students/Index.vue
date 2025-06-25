@@ -1,9 +1,16 @@
 <template>
   <DashboardLayout>
+    <template #breadcrumb>
+      <BreadcrumbBar :items=" [
+        { label: 'Dashboard', url: '/dashboard' },
+        { label: 'Students', url: '/students' }
+      ]" />
+    </template>
     <template #default>
       <div class="bg-surface-0 dark:bg-surface-900 shadow-lg rounded-3xl w-full mx-auto flex flex-col gap-6 p-8 md:p-12">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-          <h1 class="text-3xl font-bold text-surface-900 dark:text-surface-0">All Students</h1>
+                    <h1 class="text-3xl font-bold text-surface-900 dark:text-surface-0">All Students</h1>
+
           <Button 
             label="Add New Student" 
             icon="pi pi-plus" 
@@ -49,6 +56,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import DashboardLayout from '../layouts/DashboardLayout.vue';
+import BreadcrumbBar from '../../components/BreadcrumbBar.vue';
 import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
