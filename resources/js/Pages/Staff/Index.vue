@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout>
     <template #breadcrumb>
-      <BreadcrumbBar :items=" [
+      <BreadcrumbBar :items="[
         { label: 'Dashboard', url: '/dashboard' },
         { label: 'Staff', url: '/staff' }
       ]" />
@@ -9,23 +9,12 @@
     <template #default>
       <div class="bg-surface-0 dark:bg-surface-900 shadow-lg rounded-3xl w-full mx-auto flex flex-col gap-4 p-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          
-          <Button 
-            label="Add New Staff" 
-            icon="pi pi-plus" 
-            class="ml-auto" 
-            severity="primary"
-            @click="$inertia.visit('/staff/create')" 
-          />
+
+          <Button label="Add New Staff" icon="pi pi-plus" class="ml-auto" severity="primary"
+            @click="$inertia.visit('/staff/create')" />
         </div>
         <div class="bg-gray-50 rounded-xl p-0 min-h-[180px] w-full">
-          <DataTable
-            :data="staff"
-            :columns="columns"
-            searchPlaceholder="Search staff..."
-            :rows="5"
-            class="w-full"
-          />
+          <DataTable :data="staff" :columns="columns" searchPlaceholder="Search staff..." :rows="5" class="w-full" />
         </div>
       </div>
     </template>
