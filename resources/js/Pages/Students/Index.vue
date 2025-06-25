@@ -1,30 +1,22 @@
 <template>
   <DashboardLayout>
     <template #breadcrumb>
-      <BreadcrumbBar :items=" [
+      <BreadcrumbBar :items="[
         { label: 'Dashboard', url: '/dashboard' },
         { label: 'Students', url: '/students' }
       ]" />
     </template>
     <template #default>
+
       <div class="bg-surface-0 dark:bg-surface-900 shadow-lg rounded-3xl w-full mx-auto flex flex-col gap-4 p-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          
-          <Button 
-            label="Add New Student" 
-            icon="pi pi-plus" 
-            severity="primary"
-            @click="$inertia.visit('/students/create')" 
-          />
+
+          <Button label="Add New Student" icon="pi pi-plus" class="ml-auto" severity="primary"
+            @click="$inertia.visit('/students/create')" />
         </div>
         <div class="bg-gray-50 rounded-xl p-0 min-h-[180px] w-full">
-          <DataTable
-            :data="students"
-            :columns="columns"
-            searchPlaceholder="Search students..."
-            :rows="5"
-            class="w-full"
-          />
+          <DataTable :data="students" :columns="columns" searchPlaceholder="Search students..." :rows="5"
+            class="w-full" />
         </div>
       </div>
     </template>
@@ -70,7 +62,7 @@ const columns = [
 </script>
 
 <style scoped>
-.p-datatable .p-datatable-thead > tr > th {
+.p-datatable .p-datatable-thead>tr>th {
   background: #f3f4f6;
   font-weight: 600;
 }
