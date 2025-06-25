@@ -40,13 +40,13 @@
       </div>
     </aside>
     <!-- Main Content Wrapper -->
-    <div class="ml-64 min-h-screen bg-gradient-to-br from-surface-100 via-surface-50 to-surface-200 dark:from-surface-950 dark:via-surface-900 dark:to-surface-950">
-      <Header class="fixed top-0 left-64 w-[calc(100%-16rem)] z-40 custom-border">
+    <div class="ml-64 min-h-screen bg-white">
+      <Header class="fixed top-0 left-64 w-[calc(100%-16rem)] z-50 custom-border bg-white">
         <template #breadcrumb>
           <BreadcrumbBar :items="[{ label: 'Dashboard', url: '/dashboard' }]" />
         </template>
       </Header>
-      <div class="w-full">
+      <div class="w-full pt-16 relative z-10">
         <slot />
       </div>
     </div>
