@@ -7,7 +7,7 @@
       ]" />
     </template>
     <template #default>
-      <div class="bg-surface-0 dark:bg-surface-900 shadow-lg rounded-3xl w-full mx-auto flex flex-col gap-4 p-4 md:p-8">
+      <div class="bg-surface-0 dark:bg-surface-900 shadow-lg rounded-3xl w-full mx-auto flex flex-col gap-4 p-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <h1 class="text-3xl font-bold text-surface-900 dark:text-surface-0">Student List</h1>
           <Button 
