@@ -65,13 +65,9 @@ const columns = [
   {
     field: 'status',
     header: 'Status',
-    body: (slotProps) => ({
-      render() {
-        return h(Tag, {
-          value: slotProps.data.status,
-          severity: statusSeverity(slotProps.data.status)
-        });
-      }
+    body: ({ data }) => h(Tag, {
+      value: data.status,
+      severity: statusSeverity(data.status)
     })
   }
 ];
